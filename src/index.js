@@ -40,6 +40,16 @@ function* fetchAllMovies() {
         
 }
 
+function* fetchAllGenres() {
+    try {
+        const genres = yield axios.get('/api/genres');
+        console.log('got all:', genres);
+        yield put({ type: 'SET_GENRES', payload: genres.data})
+    } catch {
+        console.log('get genres error');
+    }
+}
+
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
@@ -63,6 +73,7 @@ const genres = (state = [], action) => {
     }
 }
 
+// Used to store movie details
 const details = (state = [], action) => {
     switch (action.type) {
         case 'SET_DETAILS':

@@ -15,6 +15,10 @@ function MovieList() {
         history.push('/details');
     }
 
+    const onSubmit = () => {
+        history.push('/addMovie');
+    }
+
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
@@ -22,6 +26,9 @@ function MovieList() {
     return (
         <main>
             <h1>MovieList</h1>
+            <form onSubmit={onSubmit}>
+                <button>Add a Movie</button>
+            </form>
             <section className="movies">
                 {movies.map(movie => {
                     return (
