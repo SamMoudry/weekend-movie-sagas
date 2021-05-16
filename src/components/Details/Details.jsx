@@ -11,8 +11,10 @@ function Details() {
     const [genre, setGenre] = useState([]);
     const movieDetails = useSelector(store => store.details);
 
-    const map = () => {
+    const organize = (movieDetails) => {
+        console.log('in organize');
         movieDetails.map(item => {
+            console.log('in map');
             setTitle(item.title);
             setPoster(item.poster);
             setDescription(item.description);
@@ -20,10 +22,11 @@ function Details() {
         })
     }
 
-
     useEffect(() => {
-        map();
-    }, []);
+        console.log(movieDetails);
+        organize(movieDetails);
+        console.log(title);
+    }, [movieDetails]);
 
     const handleSubmit = () => {
         dispatch({type: 'SET_DETAILS', payload: []})
