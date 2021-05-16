@@ -1,16 +1,19 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import {useHistory} from 'react-router-dom';
 import './MovieList.css'
 
 function MovieList() {
 
     const dispatch = useDispatch();
+    const history = useHistory();
     const movies = useSelector(store => store.movies);
 
     const handleClick = (id) => {
         event.preventDefault();
         console.log('clicked');
         dispatch({type: 'FETCH_MOVIE_DETAILS', payload: id});
+        history.push('/details');
     }
 
     useEffect(() => {
