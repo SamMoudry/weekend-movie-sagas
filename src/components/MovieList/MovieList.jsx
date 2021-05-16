@@ -7,6 +7,12 @@ function MovieList() {
     const dispatch = useDispatch();
     const movies = useSelector(store => store.movies);
 
+    const handleClick = (id) => {
+        event.preventDefault();
+        console.log('clicked');
+        dispatch({type: 'FETCH_MOVIE_DETAILS', payload: id});
+    }
+
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
@@ -19,7 +25,9 @@ function MovieList() {
                     return (
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
-                            <img src={movie.poster} alt={movie.title}/>
+                                <img src={movie.poster} alt={movie.title} 
+                                onClick={function() {
+                                    handleClick(movie.id)}} />
                         </div>
                     );
                 })}
