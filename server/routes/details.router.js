@@ -4,7 +4,7 @@ const pool = require('../modules/pool')
 
 router.post('/', (req, res) => {
     const query = `
-        SELECT title, description, name FROM movies
+        SELECT title, poster, description, name FROM movies
         JOIN movies_genres ON movie_id = movies.id
         JOIN genres ON genres.id = genre_id
         WHERE movies.id = ` + req.body.id;

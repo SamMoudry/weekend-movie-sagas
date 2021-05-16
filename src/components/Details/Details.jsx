@@ -12,20 +12,17 @@ function Details() {
     const movieDetails = useSelector(store => store.details);
 
     const organize = (movieDetails) => {
-        console.log('in organize');
         movieDetails.map(item => {
-            console.log('in map');
             setTitle(item.title);
             setPoster(item.poster);
             setDescription(item.description);
-            setGenre(genre.concat(item.name));
+            setGenre(genre => [...genre, item.name]);
+            console.log(genre);
         })
     }
 
     useEffect(() => {
-        console.log(movieDetails);
         organize(movieDetails);
-        console.log(title);
     }, [movieDetails]);
 
     const handleSubmit = () => {
@@ -42,6 +39,11 @@ function Details() {
                         <div>{title}</div>
                         <img src={poster} alt={title} />
                         <div>{description}</div>
+                        <ul>
+                            {genre.map((name, index) => {
+                                return<li key={index}>{name}</li>;
+                            })}
+                        </ul>
                     </div>
                 ) : ''
             }
