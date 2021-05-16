@@ -1,9 +1,10 @@
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 
 function Details() {
     const history = useHistory();
+    const dispatch = useDispatch();
     const [title, setTitle] = useState('');
     const [poster, setPoster] = useState('');
     const [description, setDescription] = useState('');
@@ -25,6 +26,7 @@ function Details() {
     }, []);
 
     const handleSubmit = () => {
+        dispatch({type: 'SET_DETAILS', payload: []})
         history.push('/');
     }
 

@@ -19,7 +19,6 @@ function* rootSaga() {
 
 function* fetchMovieDetails(action) {
     try {
-        console.log('Payload:', action.payload);
         const response = yield axios.post('/api/details', {id: action.payload});
         yield put({ type: 'SET_DETAILS', payload: response.data })
     } catch (error) {

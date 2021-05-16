@@ -11,7 +11,6 @@ function MovieList() {
 
     const handleClick = (id) => {
         event.preventDefault();
-        console.log('clicked');
         dispatch({type: 'FETCH_MOVIE_DETAILS', payload: id});
         history.push('/details');
     }
